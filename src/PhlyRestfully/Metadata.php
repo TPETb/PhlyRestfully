@@ -40,6 +40,13 @@ class Metadata
     protected $identifierName = 'id';
 
     /**
+     * How this identifier is referred routes
+     *
+     * @var array
+     */
+    protected $identifierNameAliases = array();
+
+    /**
      * Does the class represent a collection?
      *
      * @var bool
@@ -408,5 +415,23 @@ class Metadata
     {
         $this->url = $url;
         return $this;
+    }
+
+    /**
+     * @param $identifierNameAliases
+     * @return $this
+     */
+    public function setIdentifierNameAliases($identifierNameAliases)
+    {
+        $this->identifierNameAliases = $identifierNameAliases;
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getIdentifierNameAliases()
+    {
+        return $this->identifierNameAliases;
     }
 }

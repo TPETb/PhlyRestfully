@@ -922,6 +922,9 @@ class HalLinks extends AbstractHelper implements
         }
 
         $params = array_merge($metadata->getRouteParams(), array($identifierName => $id));
+        foreach ($metadata->getIdentifierNameAliases() as $alias) {
+            $params[$alias] = $id;
+        }
         $link->setRoute($metadata->getRoute(), $params, $metadata->getRouteOptions());
         return $link;
     }

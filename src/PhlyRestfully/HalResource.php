@@ -58,29 +58,6 @@ class HalResource implements LinkCollectionAwareInterface
     }
 
     /**
-     * @param $name
-     * @param $value
-     * @throws Exception\InvalidArgumentException
-     */
-    public function __set($name, $value)
-    {
-        $names = array(
-            'resource'     => 'resource',
-            'id'           => 'id',
-        );
-        $name = strtolower($name);
-        if (!in_array($name, array_keys($names))) {
-            throw new Exception\InvalidArgumentException(sprintf(
-                'Invalid property name "%s"',
-                $name
-            ));
-        }
-        $prop = $names[$name];
-
-        $this->{$prop} = $value;
-    }
-
-    /**
      * Set link collection
      *
      * @param  LinkCollection $links
