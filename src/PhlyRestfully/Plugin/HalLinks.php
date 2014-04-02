@@ -588,7 +588,9 @@ class HalLinks extends AbstractHelper implements
             $resource = new HalResource($resource, $id);
         }
 
-        $this->injectSelfLink($resource, $route, $identifierName);
+        if (!$resource->getLinks()->has('self')) {
+            $this->injectSelfLink($resource, $route, $identifierName);
+        }
         return $resource;
     }
 
@@ -611,7 +613,9 @@ class HalLinks extends AbstractHelper implements
             $collection = new HalCollection($collection);
         }
 
-        $this->injectSelfLink($collection, $route);
+        if (!$collection->getLinks()->has('self')) {
+            $this->injectSelfLink($collection, $route);
+        }
         return $collection;
     }
 
